@@ -3,17 +3,23 @@ public with sharing class IMDBController1 {
   public static String getMovies(String searchText) {
     // Create an HTTP request
     HttpRequest request = new HttpRequest();
+    // Remote Site Settings
+    // request.setEndpoint(
+    //   'https://api.collectapi.com/imdb/imdbSearchByName?query=' + searchText
+    // );
+    // Named Credentials
     request.setEndpoint(
-      'https://api.collectapi.com/imdb/imdbSearchByName?query=' + searchText
+      'callout:IMDB/imdb/imdbSearchByName?query=' + searchText
     );
     request.setMethod('GET'); // Or 'POST', 'PUT', 'DELETE', etc.
 
     // Optionally, set headers, reques body, etc.
     // request.setHeader('Content-Type', 'application/json');
-    request.setHeader(
-      'authorization',
-      'apikey 2lcEKM3fozUdtBsUrEjQ9F:57xKPz6Jw7nr1fZeNhK7Sx'
-    );
+    // Remote Site Settings
+    // request.setHeader(
+    //   'authorization',
+    //   'apikey 2lcEKM3fozUdtBsUrEjQ9F:57xKPz6Jw7nr1fZeNhK7Sx'
+    // );
     // request.setBody('{"key": "value"}');
 
     // Create an HTTP object to send the request
