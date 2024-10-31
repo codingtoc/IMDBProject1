@@ -17,6 +17,25 @@
   </lightning-card>
   <lightning-card>
     <font size="6">{showText}</font>
-    <br />{searchText}
+    <lightning-layout multiple-rows>
+      <template for:each={movies} for:item="movie">
+        <lightning-layout-item
+          key={movie.imdbID}
+          size="3"
+          class="slds-p-around_medium"
+          style="border-style: groove"
+        >
+          <img
+            src={movie.Poster}
+            alt="No Image Found"
+            style="height: 300px; width: 90%"
+          /><br />
+          Title: {movie.Title} <br />
+          Year: {movie.Year} <br />
+          imdbID: {movie.imdbID} <br />
+          Type: {movie.Type}
+        </lightning-layout-item>
+      </template>
+    </lightning-layout>
   </lightning-card>
 </template>
