@@ -8,16 +8,29 @@ export default class MoviesList1 extends LightningElement {
 
   movies = [];
 
+  processing = false;
+
   handleChange(event) {
     this.enteredText = event.target.value;
   }
 
   handleClick(event) {
-    this.searchText = this.enteredText;
+    if (this.enteredText.trim() === "") {
+      this.movies = [];
+      this.showText = "Please Enter Valid Movie Name";
+    } else if (this.enteredText.trim() === this.searchText) {
+      this.processing = false;
+    } else {
+      this.processing = true;
+      this.searchText = this.enteredText.trim();
+    }
   }
 
   @wire(getMovies, { searchText: "$searchText" })
   fetchMovies(response) {
+    if (response.data || response.error) {
+      this.processing = false;
+    }
     if (response.data) {
       let data = JSON.parse(response.data);
       if (data.success) {

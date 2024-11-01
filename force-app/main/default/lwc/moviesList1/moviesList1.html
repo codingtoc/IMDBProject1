@@ -16,6 +16,12 @@
     </lightning-layout>
   </lightning-card>
   <lightning-card>
+    <template if:true={processing}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="Medium"
+      ></lightning-spinner>
+    </template>
     <font size="6">{showText}</font>
     <lightning-layout multiple-rows>
       <template for:each={movies} for:item="movie">
