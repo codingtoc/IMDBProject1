@@ -1,15 +1,22 @@
 <template>
-  <lightning-card title="IMDB Movies Rating">
-    <lightning-layout class="slds-p-around_medium">
-      <lightning-layout-item size="5">
+  <lightning-card title="IMDB Movies">
+    <lightning-layout class="slds-p-around_medium" multiple-rows>
+      <lightning-layout-item
+        size="12"
+        small-device-size="6"
+        medium-device-size="4"
+        large-device-size="3"
+        class="slds-m-right_medium"
+      >
         <lightning-input
           label="Enter Movie Name"
           onchange={handleChange}
         ></lightning-input>
       </lightning-layout-item>
-      <lightning-layout-item class="slds-m-top_large slds-m-left_medium">
+      <lightning-layout-item class="slds-m-top_large">
         <lightning-button
           label="Search"
+          variant="brand"
           onclick={handleClick}
         ></lightning-button>
       </lightning-layout-item>
@@ -27,9 +34,11 @@
       <template for:each={movies} for:item="movie">
         <lightning-layout-item
           key={movie.imdbID}
-          size="3"
+          size="12"
+          small-device-size="6"
+          medium-device-size="4"
+          large-device-size="3"
           class="slds-p-around_medium"
-          style="border-style: groove"
         >
           <img
             src={movie.Poster}
